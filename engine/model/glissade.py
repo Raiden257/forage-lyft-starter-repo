@@ -1,12 +1,15 @@
 from datetime import datetime
 
 from engine.willoughby_engine import WilloughbyEngine
-
+from battery.Spindler_Battery import SpindlerBattery
 
 class Glissade(WilloughbyEngine):
+    def __init__(self):
+        self.WilloughbyEngine=WilloughbyEngine
+        self.SpindlerBattery=SpindlerBattery
+
     def needs_service(self):
-        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 2)
-        if service_threshold_date < datetime.today().date() or self.engine_should_be_serviced():
+        if(self.willoughby_engine.needs_service==True or self.SpindlerBattery.needs_service==True):
             return True
-        else:
+        else: 
             return False

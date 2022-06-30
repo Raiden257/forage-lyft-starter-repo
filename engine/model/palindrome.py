@@ -1,12 +1,14 @@
 from datetime import datetime
 
 from engine.sternman_engine import SternmanEngine
-
+from battery.Spindler_battery import SpindlerBattery
 
 class Palindrome(SternmanEngine):
+    def __init__(self):
+        self.SternmanEngine=SternmanEngine
+        self.SpindlerBattery=SpindlerBattery
     def needs_service(self):
-        service_threshold_date = self.last_service_date.replace(year=self.last_service_date.year + 4)
-        if service_threshold_date < datetime.today().date() or self.engine_should_be_serviced():
+        if(self.SternmanEngine_engine.needs_service==True or self.SpindlerBattery.needs_service==True):
             return True
-        else:
+        else: 
             return False
