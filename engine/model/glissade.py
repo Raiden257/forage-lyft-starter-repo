@@ -1,12 +1,12 @@
 from datetime import datetime
 
-from engine.willoughby_engine import WilloughbyEngine
-from battery.Spindler_Battery import SpindlerBattery
+from willoughby_engine import WilloughbyEngine
+from Spindler_battery import SpindlerBattery
 
-class Glissade(WilloughbyEngine):
+class Glissade(current_mileage, last_service_mileage, current_date, last_service_date):
     def __init__(self):
-        self.WilloughbyEngine=WilloughbyEngine
-        self.SpindlerBattery=SpindlerBattery
+        self.engine=WilloughbyEngine(current_mileage, last_service_mileage)
+        self.battery=SpindlerBattery(last_service_date, current_date)
 
     def needs_service(self):
         if(self.willoughby_engine.needs_service==True or self.SpindlerBattery.needs_service==True):
